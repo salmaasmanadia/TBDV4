@@ -13,7 +13,7 @@ class Address(models.Model):
 class Staff(models.Model):
     staffId = models.AutoField(primary_key=True)
     name = models.TextField()
-    addressId = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True)
+    addressId = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True, related_name='%(class)s_address')
     phoneNum = models.TextField()
     email = models.TextField()
     username = models.TextField()
@@ -24,7 +24,7 @@ class Staff(models.Model):
 class Customer(models.Model):
     customerId = models.AutoField(primary_key=True)
     name = models.TextField()
-    addressId = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True)
+    addressId = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True, related_name='%(class)s_address')
     phoneNum = models.TextField()
     email = models.TextField()
     class Meta:

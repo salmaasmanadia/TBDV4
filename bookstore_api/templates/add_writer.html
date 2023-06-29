@@ -1,17 +1,57 @@
+{% extends 'base.html' %} {% block title_content %}
+<title>Add Writer</title>
+{% endblock %} {% block page_content %}
+<style>
+  .writer-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
 
-{% extends 'base.html' %}
+  .writer-form {
+    width: 800px; /* Lebar form */
+    height: 200px; /* Tinggi form */
+    max-width: 100%;
+    padding: 20px;
+    background-color: #afeeee; /* Warna latar belakang hijau biru muda */
+    border: 1px solid #87cefa; /* Warna garis tepi biru muda */
+    border-radius: 5px;
+  }
 
-{% block title_content %}
-  <title>Add Writer</title>
-{% endblock %}
+  .writer-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #000; /* Warna teks hitam */
+  }
 
-{% block page_content %}
-  <form action="/add_writer" method="post">
+  .writer-form input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #000; /* Warna teks hitam */
+    font-family: "Comic Sans MS", cursive;
+  }
+
+  .writer-form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #ffc0cb; /* Warna latar belakang tombol pink */
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+</style>
+
+<div class="writer-form-container">
+  <form action="/add_writer" method="post" class="writer-form">
     {% csrf_token %}
     <label for="writerName">Writer Name:</label>
-    <input type="text" id="writerName" name="writerName" required>
-    <br>
-    
-    <input type="submit" value="Submit">
+    <input type="text" id="writerName" name="writerName" required />
+    <br />
+    <input type="submit" value="Submit" />
   </form>
+</div>
 {% endblock %}

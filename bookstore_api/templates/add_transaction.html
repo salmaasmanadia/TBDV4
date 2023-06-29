@@ -1,30 +1,72 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block title_content %}
+<title>Add Transaction</title>
+{% endblock %} {% block page_content %}
+<style>
+  .transaction-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
 
-{% block title_content %}
-  <title>Add Transaction</title>
-{% endblock %}
+  .transaction-form {
+    width: 800px; /* Lebar form */
+    height: 600px; /* Tinggi form */
+    max-width: 100%;
+    padding: 20px;
+    background-color: #afeeee; /* Warna latar belakang hijau biru muda */
+    border: 1px solid #87cefa; /* Warna garis tepi biru muda */
+    border-radius: 5px;
+  }
 
-{% block page_content %}
-  <form action="/add_transaction" method="post">
+  .transaction-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #000; /* Warna teks hitam */
+  }
+
+  .transaction-form input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #000; /* Warna teks hitam */
+    font-family: "Comic Sans MS", cursive;
+  }
+
+  .transaction-form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #ffc0cb; /* Warna latar belakang tombol pink */
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+</style>
+
+<div class="transaction-form-container">
+  <form action="/add_transaction" method="post" class="transaction-form">
     {% csrf_token %}
     <label for="staffName">Staff Name:</label>
-    <input type="text" id="staffName" name="staffName" required>
-    <br>
+    <input type="text" id="staffName" name="staffName" required />
+    <br />
     <label for="custName">Customer Name:</label>
-    <input type="text" id="custName" name="custName" required>
-    <br>
+    <input type="text" id="custName" name="custName" required />
+    <br />
     <label for="custPhone">Customer Phone:</label>
-    <input type="text" id="custPhone" name="custPhone" required>
-    <br>
+    <input type="text" id="custPhone" name="custPhone" required />
+    <br />
     <label for="item">Item:</label>
-    <input type="text" id="item" name="item" required>
-    <br>
+    <input type="text" id="item" name="item" required />
+    <br />
     <label for="method">Method:</label>
-    <input type="text" id="method" name="method" required>
-    <br>
+    <input type="text" id="method" name="method" required />
+    <br />
     <label for="value">Value:</label>
-    <input type="text" id="value" name="value" required>
-    <br>
-    <input type="submit" value="Submit">
+    <input type="text" id="value" name="value" required />
+    <br />
+    <input type="submit" value="Submit" />
   </form>
+</div>
 {% endblock %}
